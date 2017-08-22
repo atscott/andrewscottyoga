@@ -1,0 +1,13 @@
+.secondary {
+  color: rgba(0,0,0,0.54);
+}
+
+.main {
+  margin: 16px;
+}
+
+.hero {
+  background-size: cover;
+  background-position: center center;
+  transition: background-image 0.5s linear
+}
