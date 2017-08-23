@@ -1,26 +1,27 @@
-<md-sidenav-container>
+<div fxLayout="column" [style.minHeight.%]="100">
   <md-toolbar>
     <a *ngFor="let item of menuItems" md-button [routerLink]="item.link">
       <span>{{item.name}}</span>
     </a>
   </md-toolbar>
-  <div class="hero" [style.backgroundImage]="'url(' + hero + ')'" [style.height.px]="heroHeight">
+  <div class="hero" progressiveBackgroundImage [hq]="activePageData.hero + '.jpg'" [lq]="activePageData.hero + '_preload.jpg'">
     <div style="right:0; position:absolute;">
     </div>
-    <div style="text-transform: uppercase; color: white; text-align:center" fxFlex="grow" fxLayout="column" fxLayoutAlign="center center">
-      <div style="background-color: rgba(0,0,0,.15); border-radius: 10px;">
-        <span style="font-size: 80px; line-height: 90px; font-weight: 400">
-          Andrew Scott
+    <div fxFlex="grow" fxLayout="column" fxLayoutAlign="center center">
+      <div class="hero-text-container" *ngIf="activePageData.header || activePageData.subheader">
+        <span class="page-header">
+          {{activePageData.header}}
         </span>
-        <div style="font-size: 30px; line-height: 70px; font-weight: 300">
-          Yoga Teacher
+        <div class="page-subheader">
+          {{activePageData.subheader}}
         </div>
       </div>
     </div>
   </div>
-  <div class="my-content">
+  <div class="my-content" fxFlex="grow">
     <div class="main">
       <router-outlet></router-outlet>
     </div>
   </div>
-</md-sidenav-container>
+  <footer></footer>
+</div>

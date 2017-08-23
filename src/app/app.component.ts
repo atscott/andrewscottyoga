@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
+import {AboutComponent} from './about/about.component';
 import {CalendarComponent} from './calendar/calendar.component';
 import {HomeComponent} from './home/home.component';
 
@@ -8,24 +9,38 @@ import {HomeComponent} from './home/home.component';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  host: {'(window:resize)': 'onResize($event)'}
 })
 export class AppComponent {
-  hero = 'hero1.jpg';
+  hero = 'hero1';
   heroHeight = '600';
   readonly menuItems = [
-    {name: 'Home', icon: 'home', link: '', secondary: ''},
-    {name: 'About', icon: 'info', link: 'about', secondary: ''},
-    {
-      name: 'Calendar',
-      icon: 'event',
-      link: 'calendar',
-      secondary: 'Teaching and attending schedule'
-    },
+    {name: 'Home', link: ''},
+    {name: 'About', link: 'about'},
+    {name: 'Calendar', link: 'calendar'},
   ];
 
+
+  readonly pageData = new Map([
+    [
+      HomeComponent, {
+        hero: '/assets/hero1',
+        header: 'Andrew Scott',
+        subheader: 'Yoga teacher'
+      }
+    ],
+    [
+      CalendarComponent, {
+        hero: '/assets/hero2',
+        header: 'Yoga calendar',
+        subheader: `Classes I'm attending or teaching`
+      }
+    ],
+    [AboutComponent, {hero: '/assets/hero3', header: '', subheader: ''}]
+  ]);
+
+  activePageData = this.pageData.get(HomeComponent)
+
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    this.onResize({target: {innerWidth: window.innerWidth}});
     this.router.events.filter((event) => event instanceof NavigationEnd)
         .map(() => this.activatedRoute)
         .map((route) => {
@@ -34,28 +49,8 @@ export class AppComponent {
         })
         .filter((route) => route.outlet === 'primary')
         .subscribe((route) => {
-          switch (route.component) {
-            case HomeComponent:
-              this.hero = '/assets/hero1.jpg';
-              break;
-            case CalendarComponent:
-              this.hero = '/assets/hero2.jpg';
-              break;
-            default:
-              this.hero = '/assets/hero3.jpg';
-              break;
-          }
+          this.activePageData = this.pageData.get(route.component as any) ||
+              this.pageData.get(HomeComponent);
         });
-  }
-
-  onResize(event) {
-    const width = event.target.innerWidth;
-    if (width < 900 && width > 600) {
-      this.heroHeight = '500';
-    } else if (width < 600) {
-      this.heroHeight = '400';
-    } else {
-      this.heroHeight = '600';
-    }
   }
 }
