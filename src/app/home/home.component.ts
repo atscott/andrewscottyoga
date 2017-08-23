@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   onResize(width) {
-    console.log(width);
     if (width < 700) {
       this.imageWidth = '29%';
       this.imageMargin = '2px';
