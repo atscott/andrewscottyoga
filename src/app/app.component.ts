@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {Angulartics2GoogleAnalytics} from 'angulartics2';
 
 import {AboutComponent} from './about/about.component';
 import {CalendarComponent} from './calendar/calendar.component';
 import {HomeComponent} from './home/home.component';
+
 
 @Component({
   selector: 'app-root',
@@ -40,7 +42,9 @@ export class AppComponent {
 
   activePageData = this.pageData.get(HomeComponent)
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+      private router: Router, private activatedRoute: ActivatedRoute,
+      angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
     this.router.events.filter((event) => event instanceof NavigationEnd)
         .map(() => this.activatedRoute)
         .map((route) => {
