@@ -37,7 +37,7 @@ export class AppComponent {
         subheader: `Classes I'm attending or teaching`
       }
     ],
-    [AboutComponent, {hero: '/assets/hero3', header: '', subheader: ''}]
+    [AboutComponent, {hero: '/assets/hero4', header: '', subheader: ''}]
   ]);
 
   activePageData = this.pageData.get(HomeComponent)

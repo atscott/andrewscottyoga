@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   imageMargin: string;
 
   images = [
-    'insta1.jpg', 'insta2.jpg', 'insta3.jpg', 'insta4.jpg', 'insta5.jpg',
+    'insta8.jpg', 'insta2.jpg', 'insta3.jpg', 'insta4.jpg', 'insta5.jpg',
     'insta6.jpg'
   ];
 
