@@ -1,0 +1,11 @@
+iframe {
+  width: 100%;
+  height: 800px;
+  border: 0;
+}
+
+.iframe-container {
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+}

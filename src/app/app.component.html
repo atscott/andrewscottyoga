@@ -1,8 +1,16 @@
 <div fxLayout="column" [style.minHeight.%]="100">
   <md-toolbar>
-    <a *ngFor="let item of menuItems" md-button [routerLink]="item.link">
+    <a *ngFor="let item of menuItems" md-button [routerLink]="item.link" fxHide.xs>
       <span>{{item.name}}</span>
     </a>
+    <button md-icon-button [mdMenuTriggerFor]="mobileMenu" fxHide.gt-xs>
+       <md-icon>menu</md-icon>
+    </button>
+    <md-menu #mobileMenu="mdMenu">
+      <button md-menu-item *ngFor="let item of menuItems" [routerLink]="item.link">
+        <span>{{item.name}}</span>
+      </button>
+    </md-menu>
   </md-toolbar>
   <div class="hero" progressiveBackgroundImage [hq]="activePageData.hero + '.jpg'" [lq]="activePageData.hero + '_preload.jpg'">
     <div style="right:0; position:absolute;">

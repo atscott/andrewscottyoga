@@ -5,6 +5,7 @@ import {Angulartics2GoogleAnalytics} from 'angulartics2';
 import {AboutComponent} from './about/about.component';
 import {CalendarComponent} from './calendar/calendar.component';
 import {HomeComponent} from './home/home.component';
+import {ResumeComponent} from './resume/resume.component';
 
 
 @Component({
@@ -19,8 +20,8 @@ export class AppComponent {
     {name: 'Home', link: ''},
     {name: 'About', link: 'about'},
     {name: 'Calendar', link: 'calendar'},
+    {name: 'Resume', link: 'resume'},
   ];
-
 
   readonly pageData = new Map([
     [
@@ -37,7 +38,8 @@ export class AppComponent {
         subheader: `Classes I'm attending or teaching`
       }
     ],
-    [AboutComponent, {hero: '/assets/hero4', header: '', subheader: ''}]
+    [AboutComponent, {hero: '/assets/hero4', header: '', subheader: ''}],
+    [ResumeComponent, {hero: '/assets/hero3', header: '', subheader: ''}],
   ]);
 
   activePageData = this.pageData.get(HomeComponent)

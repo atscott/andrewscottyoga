@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {MdButtonModule, MdGridListModule, MdIconModule, MdListModule, MdSidenavModule, MdToolbarModule} from '@angular/material';
+import {MdButtonModule, MdGridListModule, MdIconModule, MdListModule, MdSidenavModule, MdToolbarModule, MdMenuModule} from '@angular/material';
 
 
 @NgModule({
@@ -12,8 +12,10 @@ import {MdButtonModule, MdGridListModule, MdIconModule, MdListModule, MdSidenavM
     MdButtonModule,
     MdListModule,
     MdGridListModule,
+    MdMenuModule,
   ],
   exports: [
+    MdMenuModule,
     MdToolbarModule,
     FlexLayoutModule,
     MdSidenavModule,
